@@ -14,7 +14,7 @@ Combining multiple retrieval strategies, reranking, session memory, groundedness
 ![Docker](https://img.shields.io/badge/Docker-Supported-2496ED?logo=docker&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Working%20Locally-success)
 
-> **Status:** Working locally · Tested · Benchmarked
+> **Status:** Production-oriented · Tested locally · Retrieval benchmarked
 > **Repository:** `codebyj857/rag-engineering-system`
 
 </div>
