@@ -28,3 +28,5 @@ packages = ["src/rag_engine"]
 dev = [
     "pytest>=9.1.1",
 ]
+[tool.vercel]
+entrypoint = "src/rag_engine/main.py:app"
