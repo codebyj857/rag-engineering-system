@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="RAG Engineering System — Evaluation-driven Retrieval-Augmented Generation"
+    >
+
+    <title>RAG Engineering System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         APPLICATION SHELL
+    ========================================================== -->
+
+    <div class="app-shell">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <!-- Brand -->
+            <div class="brand">
+
+                <div class="brand-mark">
+                    <span class="brand-mark-inner">R</span>
+                </div>
+
+                <div class="brand-copy">
+                    <h1>RAG System</h1>
+                    <p>Retrieval-Augmented Generation</p>
+                </div>
+
+            </div>
+
+
+            <!-- New Conversation -->
+            <div class="sidebar-section">
+
+                <button
+                    class="new-chat-btn"
+                    id="newChatBtn"
+                    type="button"
+                >
+                    <span class="btn-icon">＋</span>
+                    <span>New Conversation</span>
+                </button>
+
+            </div>
+
+
+            <!-- Documents -->
+            <div class="sidebar-section documents-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-title">Documents</span>
+                        <span class="section-count" id="documentCount">0</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Upload area -->
+                <div
+                    class="upload-zone"
+                    id="uploadZone"
+                    role="button"
+                    tabindex="0"
+                >
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        multiple
+                        accept=".pdf,.txt,.docx,.csv,.json"
+                        hidden
+                    >
+
+                    <div class="upload-icon">
+                        ↑
+                    </div>
+
+                    <div class="upload-content">
+
+                        <strong>Upload documents</strong>
+
+                        <span>
+                            Drop files here or click to browse
+                        </span>
+
+                    </div>
+
+                    <div class="upload-formats">
+                        PDF · TXT · DOCX · CSV · JSON
+                    </div>
+
+                </div>
+
+
+                <!-- Document list -->
+                <div
+                    class="document-list"
+                    id="documentList"
+                >
+
+                    <div class="empty-documents" id="emptyDocuments">
+
+                        <span class="empty-icon">◫</span>
+
+                        <span>
+                            No documents indexed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Retrieval Strategy -->
+            <div class="sidebar-section">
+
+                <div class="section-heading">
+
+                    <span class="section-title">
+                        Retrieval Strategy
+                    </span>
+
+                </div>
+
+
+                <div class="select-wrapper">
+
+                    <select
+                        id="retrievalStrategy"
+                        class="strategy-select"
+                    >
+
+                        <option value="hybrid">
+                            Hybrid — Semantic + Lexical
+                        </option>
+
+                        <option value="naive">
+                            Naive — Semantic
+                        </option>
+
+                        <option value="reranked">
+                            Reranked — Retrieve + Rerank
+                        </option>
+
+                    </select>
+
+                    <span class="select-arrow">⌄</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Connection -->
+            <div class="sidebar-footer">
+
+                <div class="connection-status">
+
+                    <span
+                        class="status-dot"
+                        id="connectionDot"
+                    ></span>
+
+                    <div class="connection-copy">
+
+                        <span class="connection-label">
+                            API Connection
+                        </span>
+
+                        <span
+                            class="connection-value"
+                            id="connectionStatus"
+                        >
+                            Checking...
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="version-label">
+                    RAG Engine · v1.0
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN APPLICATION
+        ====================================================== -->
+
+        <main class="main-content">
+
+            <!-- =================================================
+                 TOP BAR
+            ================================================== -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        class="mobile-menu-btn"
+                        id="mobileMenuBtn"
+                        type="button"
+                        aria-label="Open menu"
+                    >
+                        ☰
+                    </button>
+
+
+                    <div class="page-heading">
+
+                        <span class="eyebrow">
+                            RAG WORKSPACE
+                        </span>
+
+                        <h2>Knowledge Assistant</h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="strategy-badge">
+
+                        <span class="badge-dot"></span>
+
+                        <span id="activeStrategyLabel">
+                            Hybrid Retrieval
+                        </span>
+
+                    </div>
+
+
+                    <div class="session-badge">
+
+                        <span class="session-label">
+                            SESSION
+                        </span>
+
+                        <span id="sessionIdDisplay">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 CHAT WORKSPACE
+            ================================================== -->
+
+            <section class="workspace">
+
+                <!-- Chat -->
+                <div class="chat-panel">
+
+                    <div
+                        class="messages"
+                        id="messages"
+                    >
+
+                        <!-- Empty state -->
+                        <div
+                            class="welcome-state"
+                            id="welcomeState"
+                        >
+
+                            <div class="welcome-icon">
+                                <span>R</span>
+                            </div>
+
+                            <span class="welcome-eyebrow">
+                                RETRIEVAL-AUGMENTED GENERATION
+                            </span>
+
+                            <h3>
+                                Ask your knowledge base.
+                            </h3>
+
+                            <p>
+                                Upload documents and ask questions grounded
+                                in your indexed knowledge. Retrieval,
+                                verification, and evaluation details remain
+                                visible throughout the workflow.
+                            </p>
+
+
+                            <div class="capability-grid">
+
+                                <button
+                                    class="capability-card"
+                                    data-prompt="What are the main topics covered in the uploaded documents?"
+                                    type="button"
+                                >
+
+                                    <span class="capability-icon">⌕</span>
+
+                                    <span>
+                                        <strong>Search knowledge</strong>
+                                        <small>Retrieve relevant evidence</small>
+                                    </span>
+
+                                </button>
+
+
+                                <button
+                                    class="capability-card"
+                                    data-prompt="Summarize the key information from the uploaded documents."
+                                    type="button"
+                                >
+
+                                    <span class="capability-icon">≡</span>
+
+                                    <span>
+                                        <strong>Summarize</strong>
+                                        <small>Condense your knowledge base</small>
+                                    </span>
+
+                                </button>
+
+
+                                <button
+                                    class="capability-card"
+                                    data-prompt="Compare the most relevant information across the documents."
+                                    type="button"
+                                >
+
+                                    <span class="capability-icon">⇄</span>
+
+                                    <span>
+                                        <strong>Compare</strong>
+                                        <small>Connect information across sources</small>
+                                    </span>
+
+                                </button>
+
+
+                                <button
+                                    class="capability-card"
+                                    data-prompt="Show me the evidence supporting the answer."
+                                    type="button"
+                                >
+
+                                    <span class="capability-icon">◈</span>
+
+                                    <span>
+                                        <strong>Inspect evidence</strong>
+                                        <small>Trace answers to retrieved chunks</small>
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         COMPOSER
+                    ================================================== -->
+
+                    <div class="composer-wrapper">
+
+                        <div class="composer">
+
+                            <textarea
+                                id="chatInput"
+                                rows="1"
+                                placeholder="Ask a question about your documents..."
+                                aria-label="Message"
+                            ></textarea>
+
+
+                            <div class="composer-bottom">
+
+                                <div class="composer-info">
+
+                                    <span class="composer-hint">
+                                        Enter to send
+                                    </span>
+
+                                    <span class="composer-divider">
+                                        ·
+                                    </span>
+
+                                    <span class="composer-hint">
+                                        Shift + Enter for new line
+                                    </span>
+
+                                </div>
+
+
+                                <button
+                                    class="send-btn"
+                                    id="sendBtn"
+                                    type="button"
+                                    aria-label="Send message"
+                                >
+                                    <span>Send</span>
+                                    <span class="send-icon">↑</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <p class="disclaimer">
+                            AI-generated responses should be verified against
+                            retrieved evidence.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     INSPECTION PANEL
+                ================================================== -->
+
+                <aside
+                    class="inspection-panel"
+                    id="inspectionPanel"
+                >
+
+                    <div class="inspection-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                OBSERVABILITY
+                            </span>
+
+                            <h3>Run Details</h3>
+
+                        </div>
+
+                        <button
+                            class="panel-close-btn"
+                            id="closeInspectionBtn"
+                            type="button"
+                            aria-label="Close panel"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <!-- Retrieval -->
+                    <section class="detail-section">
+
+                        <div class="detail-section-header">
+
+                            <span>
+                                Retrieval
+                            </span>
+
+                            <span
+                                class="detail-status"
+                                id="retrievalStatus"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="retrieval-details"
+                            id="retrievalDetails"
+                        >
+
+                            <div class="empty-detail">
+                                Retrieval details will appear here after
+                                your first query.
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- Verification -->
+                    <section class="detail-section">
+
+                        <div class="detail-section-header">
+
+                            <span>
+                                Verification
+                            </span>
+
+                            <span
+                                class="detail-status"
+                                id="verificationStatus"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="verification-card">
+
+                            <div class="verification-row">
+
+                                <span>
+                                    Groundedness
+                                </span>
+
+                                <strong id="groundednessScore">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="verification-bar">
+
+                                <div
+                                    class="verification-fill"
+                                    id="groundednessFill"
+                                    style="width: 0%"
+                                ></div>
+
+                            </div>
+
+
+                            <div class="verification-row">
+
+                                <span>
+                                    Confidence
+                                </span>
+
+                                <strong id="confidenceScore">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="verification-bar">
+
+                                <div
+                                    class="verification-fill"
+                                    id="confidenceFill"
+                                    style="width: 0%"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                </aside>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         MOBILE OVERLAY
+    ========================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =========================================================
+         TOAST CONTAINER
+    ========================================================== -->
+
+    <div
+        class="toast-container"
+        id="toastContainer"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

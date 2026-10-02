@@ -1,0 +1,3275 @@
+{
+  "experiment": {
+    "type": "retrieval_only",
+    "dataset": "D:\\rag-engineering-system\\data\\evaluation\\questions.jsonl",
+    "dataset_size": 12,
+    "top_k": 5,
+    "vector_store_chunks": 18,
+    "document_metric_definition": "Precision, recall, F1, and hit rate are calculated over unique document IDs preserving retrieval order.",
+    "chunk_metric_definition": "Precision, recall, F1, hit rate, and MRR are calculated over individual chunk IDs.",
+    "reranker_candidate_multiplier": 4,
+    "reranker_candidate_pool": 20,
+    "strategies": [
+      "naive",
+      "hybrid",
+      "reranked"
+    ],
+    "total_evaluations": 36,
+    "llm_used": false,
+    "groq_api_used": false
+  },
+  "runs": {
+    "naive": {
+      "strategy": "naive",
+      "dataset_size": 12,
+      "top_k": 5,
+      "aggregate": {
+        "document_precision_at_k": 0.6944,
+        "document_recall_at_k": 1.0,
+        "document_f1_at_k": 0.7778,
+        "document_hit_at_k": 1.0,
+        "chunk_precision_at_k": 0.25,
+        "chunk_recall_at_k": 0.875,
+        "chunk_f1_at_k": 0.3809,
+        "chunk_hit_at_k": 0.9167,
+        "mrr": 0.8333,
+        "mean_latency_seconds": 0.498487
+      },
+      "examples": [
+        {
+          "question_index": 1,
+          "question": "What is Retrieval-Augmented Generation (RAG)?",
+          "category": "rag_basics",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "088f63f7cb53bc5d"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2",
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "088f63f7cb53bc5d",
+            "e03a974470f2a862",
+            "7ae29cf14c0f5084",
+            "7c114d05d4ca4123",
+            "5ec861860791dda1"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 1,
+              "score": 0.442282
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 2,
+              "score": 0.207397
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": 0.09422
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 4,
+              "score": 0.013124
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 5,
+              "score": -0.018674
+            }
+          ],
+          "latency_seconds": 5.669045,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 2,
+          "question": "Why is document chunking important in a RAG system?",
+          "category": "rag_basics",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "ce166b90baae05c2"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "ce166b90baae05c2",
+            "5ec861860791dda1",
+            "e03a974470f2a862",
+            "62548cc173b8a17e",
+            "088f63f7cb53bc5d"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 1,
+              "score": 0.411245
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 2,
+              "score": 0.122977
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 3,
+              "score": 0.099255
+            },
+            {
+              "chunk_id": "62548cc173b8a17e",
+              "rank": 4,
+              "score": 0.023861
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 5,
+              "score": -0.004671
+            }
+          ],
+          "latency_seconds": 0.034522,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 3,
+          "question": "What is the role of embeddings in a RAG system?",
+          "category": "retrieval",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "537b7058cd48d46e",
+            "7c114d05d4ca4123"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "ce166b90baae05c2",
+            "7c114d05d4ca4123",
+            "62548cc173b8a17e",
+            "e03a974470f2a862",
+            "088f63f7cb53bc5d"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 0.5,
+            "f1_at_k": 0.2857,
+            "hit_at_k": 1.0
+          },
+          "mrr": 0.5,
+          "first_relevant_chunk_rank": 2,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 1,
+              "score": 0.035278
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 2,
+              "score": -0.108476
+            },
+            {
+              "chunk_id": "62548cc173b8a17e",
+              "rank": 3,
+              "score": -0.109271
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 4,
+              "score": -0.112815
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 5,
+              "score": -0.129141
+            }
+          ],
+          "latency_seconds": 0.040901,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 4,
+          "question": "What is hybrid retrieval?",
+          "category": "retrieval",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "7ae29cf14c0f5084",
+            "b39e7c06e7a3136d"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "b39e7c06e7a3136d",
+            "7ae29cf14c0f5084",
+            "e03a974470f2a862",
+            "088f63f7cb53bc5d",
+            "12b2b910001e8c64"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 1,
+              "score": 0.048586
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 2,
+              "score": -0.003549
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 3,
+              "score": -0.057003
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": -0.069885
+            },
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 5,
+              "score": -0.127982
+            }
+          ],
+          "latency_seconds": 0.022939,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 5,
+          "question": "What does a reranker do in a retrieval pipeline?",
+          "category": "retrieval",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "12b2b910001e8c64",
+            "7ae29cf14c0f5084"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "12b2b910001e8c64",
+            "b39e7c06e7a3136d",
+            "7ae29cf14c0f5084",
+            "e03a974470f2a862",
+            "7c114d05d4ca4123"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 1,
+              "score": 0.345147
+            },
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 2,
+              "score": 0.116409
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": 0.105148
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 4,
+              "score": -0.092879
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 5,
+              "score": -0.191887
+            }
+          ],
+          "latency_seconds": 0.02795,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 6,
+          "question": "What does faithfulness measure in RAG evaluation?",
+          "category": "evaluation",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "7ae29cf14c0f5084",
+            "a28c26ef4a36c9ab"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2",
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "a28c26ef4a36c9ab",
+            "e03a974470f2a862",
+            "7ae29cf14c0f5084",
+            "5ec861860791dda1",
+            "ce166b90baae05c2"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "a28c26ef4a36c9ab",
+              "rank": 1,
+              "score": 0.157559
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 2,
+              "score": -0.303689
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": -0.333367
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 4,
+              "score": -0.384392
+            },
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 5,
+              "score": -0.436362
+            }
+          ],
+          "latency_seconds": 0.025604,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 7,
+          "question": "What is precision@k in information retrieval?",
+          "category": "evaluation",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "e03a974470f2a862"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "12b2b910001e8c64",
+            "e03a974470f2a862",
+            "458aa88d35533fc8",
+            "f0ab7e4ca607fb8f",
+            "98e7de02846e5670"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 0.5,
+          "first_relevant_chunk_rank": 2,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 1,
+              "score": 0.202578
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 2,
+              "score": 0.131298
+            },
+            {
+              "chunk_id": "458aa88d35533fc8",
+              "rank": 3,
+              "score": -0.238987
+            },
+            {
+              "chunk_id": "f0ab7e4ca607fb8f",
+              "rank": 4,
+              "score": -0.273537
+            },
+            {
+              "chunk_id": "98e7de02846e5670",
+              "rank": 5,
+              "score": -0.274646
+            }
+          ],
+          "latency_seconds": 0.035459,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 8,
+          "question": "What is recall@k in information retrieval?",
+          "category": "evaluation",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "e03a974470f2a862"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "e03a974470f2a862",
+            "12b2b910001e8c64",
+            "088f63f7cb53bc5d",
+            "7ae29cf14c0f5084",
+            "b39e7c06e7a3136d"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 1,
+              "score": 0.25114
+            },
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 2,
+              "score": 0.145007
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 3,
+              "score": 0.031315
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 4,
+              "score": -0.038259
+            },
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 5,
+              "score": -0.108602
+            }
+          ],
+          "latency_seconds": 0.025026,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 9,
+          "question": "What does self-attention allow a Transformer to do?",
+          "category": "transformers",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "98e7de02846e5670"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "4be6039107967a2e",
+            "b35c99de63c922ef",
+            "5ec861860791dda1",
+            "b1eb789556dc255f",
+            "cf4357695e11239d"
+          ],
+          "unique_document_count": 1,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.0,
+            "recall_at_k": 0.0,
+            "f1_at_k": 0.0,
+            "hit_at_k": 0.0
+          },
+          "mrr": 0.0,
+          "first_relevant_chunk_rank": null,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 1,
+              "score": 0.269793
+            },
+            {
+              "chunk_id": "b35c99de63c922ef",
+              "rank": 2,
+              "score": 0.099612
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 3,
+              "score": -0.04061
+            },
+            {
+              "chunk_id": "b1eb789556dc255f",
+              "rank": 4,
+              "score": -0.086128
+            },
+            {
+              "chunk_id": "cf4357695e11239d",
+              "rank": 5,
+              "score": -0.151076
+            }
+          ],
+          "latency_seconds": 0.021814,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 10,
+          "question": "What are the query, key, and value representations in self-attention used for?",
+          "category": "transformers",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "98e7de02846e5670"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "98e7de02846e5670",
+            "4be6039107967a2e",
+            "b35c99de63c922ef",
+            "5ec861860791dda1",
+            "cf4357695e11239d"
+          ],
+          "unique_document_count": 1,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "98e7de02846e5670",
+              "rank": 1,
+              "score": 0.273937
+            },
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 2,
+              "score": 0.121835
+            },
+            {
+              "chunk_id": "b35c99de63c922ef",
+              "rank": 3,
+              "score": 0.046367
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 4,
+              "score": -0.043219
+            },
+            {
+              "chunk_id": "cf4357695e11239d",
+              "rank": 5,
+              "score": -0.1877
+            }
+          ],
+          "latency_seconds": 0.026065,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 11,
+          "question": "What is LoRA and why is it used?",
+          "category": "transformers",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "b1eb789556dc255f"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "b1eb789556dc255f",
+            "e03a974470f2a862",
+            "f0ab7e4ca607fb8f",
+            "088f63f7cb53bc5d",
+            "62548cc173b8a17e"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "b1eb789556dc255f",
+              "rank": 1,
+              "score": -0.137028
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 2,
+              "score": -0.647354
+            },
+            {
+              "chunk_id": "f0ab7e4ca607fb8f",
+              "rank": 3,
+              "score": -0.682553
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": -0.69562
+            },
+            {
+              "chunk_id": "62548cc173b8a17e",
+              "rank": 5,
+              "score": -0.747918
+            }
+          ],
+          "latency_seconds": 0.02809,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 12,
+          "question": "How does a RAG system use a Transformer-based language model?",
+          "category": "cross_document",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "088f63f7cb53bc5d",
+            "5ec861860791dda1"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "5ec861860791dda1",
+            "088f63f7cb53bc5d",
+            "cf4357695e11239d",
+            "b1eb789556dc255f",
+            "4be6039107967a2e"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 1,
+              "score": 0.28491
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 2,
+              "score": 0.116631
+            },
+            {
+              "chunk_id": "cf4357695e11239d",
+              "rank": 3,
+              "score": -0.078575
+            },
+            {
+              "chunk_id": "b1eb789556dc255f",
+              "rank": 4,
+              "score": -0.090607
+            },
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 5,
+              "score": -0.096047
+            }
+          ],
+          "latency_seconds": 0.024427,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_similarity",
+            "top_k": 5
+          }
+        }
+      ]
+    },
+    "hybrid": {
+      "strategy": "hybrid",
+      "dataset_size": 12,
+      "top_k": 5,
+      "aggregate": {
+        "document_precision_at_k": 0.625,
+        "document_recall_at_k": 1.0,
+        "document_f1_at_k": 0.7333,
+        "document_hit_at_k": 1.0,
+        "chunk_precision_at_k": 0.2667,
+        "chunk_recall_at_k": 0.9167,
+        "chunk_f1_at_k": 0.4047,
+        "chunk_hit_at_k": 0.9167,
+        "mrr": 0.8125,
+        "mean_latency_seconds": 0.02729
+      },
+      "examples": [
+        {
+          "question_index": 1,
+          "question": "What is Retrieval-Augmented Generation (RAG)?",
+          "category": "rag_basics",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "088f63f7cb53bc5d"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2",
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "088f63f7cb53bc5d",
+            "e03a974470f2a862",
+            "7ae29cf14c0f5084",
+            "7c114d05d4ca4123",
+            "5ec861860791dda1"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 1,
+              "score": 0.559598
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 2,
+              "score": 0.295178
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": 0.265954
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 4,
+              "score": 0.209186
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 5,
+              "score": 0.15
+            }
+          ],
+          "latency_seconds": 0.028334,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 2,
+          "question": "Why is document chunking important in a RAG system?",
+          "category": "rag_basics",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "ce166b90baae05c2"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "ce166b90baae05c2",
+            "5ec861860791dda1",
+            "e03a974470f2a862",
+            "7c114d05d4ca4123",
+            "7ae29cf14c0f5084"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 1,
+              "score": 0.521205
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 2,
+              "score": 0.319417
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 3,
+              "score": 0.236145
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 4,
+              "score": 0.2
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 5,
+              "score": 0.2
+            }
+          ],
+          "latency_seconds": 0.025394,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 3,
+          "question": "What is the role of embeddings in a RAG system?",
+          "category": "retrieval",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "537b7058cd48d46e",
+            "7c114d05d4ca4123"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2",
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "7c114d05d4ca4123",
+            "ce166b90baae05c2",
+            "088f63f7cb53bc5d",
+            "537b7058cd48d46e",
+            "5ec861860791dda1"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.6667,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.8,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 1,
+              "score": 0.24
+            },
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 2,
+              "score": 0.234695
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 3,
+              "score": 0.21
+            },
+            {
+              "chunk_id": "537b7058cd48d46e",
+              "rank": 4,
+              "score": 0.21
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 5,
+              "score": 0.18
+            }
+          ],
+          "latency_seconds": 0.029766,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 4,
+          "question": "What is hybrid retrieval?",
+          "category": "retrieval",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "7ae29cf14c0f5084",
+            "b39e7c06e7a3136d"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "b39e7c06e7a3136d",
+            "7ae29cf14c0f5084",
+            "7c114d05d4ca4123",
+            "088f63f7cb53bc5d",
+            "a28c26ef4a36c9ab"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 1,
+              "score": 0.25901
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 2,
+              "score": 0.225
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 3,
+              "score": 0.225
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": 0.15
+            },
+            {
+              "chunk_id": "a28c26ef4a36c9ab",
+              "rank": 5,
+              "score": 0.15
+            }
+          ],
+          "latency_seconds": 0.030497,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 5,
+          "question": "What does a reranker do in a retrieval pipeline?",
+          "category": "retrieval",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "12b2b910001e8c64",
+            "7ae29cf14c0f5084"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "12b2b910001e8c64",
+            "b39e7c06e7a3136d",
+            "7ae29cf14c0f5084",
+            "088f63f7cb53bc5d",
+            "7c114d05d4ca4123"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 1,
+              "score": 0.374937
+            },
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 2,
+              "score": 0.248153
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": 0.206937
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": 0.166667
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 5,
+              "score": 0.133333
+            }
+          ],
+          "latency_seconds": 0.024638,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 6,
+          "question": "What does faithfulness measure in RAG evaluation?",
+          "category": "evaluation",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "7ae29cf14c0f5084",
+            "a28c26ef4a36c9ab"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "a28c26ef4a36c9ab",
+            "7ae29cf14c0f5084",
+            "5ec861860791dda1",
+            "e03a974470f2a862",
+            "ce166b90baae05c2"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "a28c26ef4a36c9ab",
+              "rank": 1,
+              "score": 0.28172
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 2,
+              "score": 0.171429
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 3,
+              "score": 0.128571
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 4,
+              "score": 0.085714
+            },
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 5,
+              "score": 0.085714
+            }
+          ],
+          "latency_seconds": 0.028428,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 7,
+          "question": "What is precision@k in information retrieval?",
+          "category": "evaluation",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "e03a974470f2a862"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "12b2b910001e8c64",
+            "e03a974470f2a862",
+            "f0ab7e4ca607fb8f",
+            "7ae29cf14c0f5084",
+            "088f63f7cb53bc5d"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 0.5,
+          "first_relevant_chunk_rank": 2,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 1,
+              "score": 0.270376
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 2,
+              "score": 0.263337
+            },
+            {
+              "chunk_id": "f0ab7e4ca607fb8f",
+              "rank": 3,
+              "score": 0.171429
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 4,
+              "score": 0.171429
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 5,
+              "score": 0.171429
+            }
+          ],
+          "latency_seconds": 0.027554,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 8,
+          "question": "What is recall@k in information retrieval?",
+          "category": "evaluation",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "e03a974470f2a862"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "e03a974470f2a862",
+            "12b2b910001e8c64",
+            "088f63f7cb53bc5d",
+            "7ae29cf14c0f5084",
+            "7c114d05d4ca4123"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 1,
+              "score": 0.347227
+            },
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 2,
+              "score": 0.230077
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 3,
+              "score": 0.193349
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 4,
+              "score": 0.171429
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 5,
+              "score": 0.171429
+            }
+          ],
+          "latency_seconds": 0.025404,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 9,
+          "question": "What does self-attention allow a Transformer to do?",
+          "category": "transformers",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "98e7de02846e5670"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "4be6039107967a2e",
+            "b35c99de63c922ef",
+            "b1eb789556dc255f",
+            "98e7de02846e5670",
+            "5ec861860791dda1"
+          ],
+          "unique_document_count": 1,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 0.25,
+          "first_relevant_chunk_rank": 4,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 1,
+              "score": 0.388855
+            },
+            {
+              "chunk_id": "b35c99de63c922ef",
+              "rank": 2,
+              "score": 0.203062
+            },
+            {
+              "chunk_id": "b1eb789556dc255f",
+              "rank": 3,
+              "score": 0.166667
+            },
+            {
+              "chunk_id": "98e7de02846e5670",
+              "rank": 4,
+              "score": 0.166667
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 5,
+              "score": 0.133333
+            }
+          ],
+          "latency_seconds": 0.027704,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 10,
+          "question": "What are the query, key, and value representations in self-attention used for?",
+          "category": "transformers",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "98e7de02846e5670"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "98e7de02846e5670",
+            "4be6039107967a2e",
+            "b35c99de63c922ef",
+            "537b7058cd48d46e",
+            "5ec861860791dda1"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "98e7de02846e5670",
+              "rank": 1,
+              "score": 0.445602
+            },
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 2,
+              "score": 0.246823
+            },
+            {
+              "chunk_id": "b35c99de63c922ef",
+              "rank": 3,
+              "score": 0.193995
+            },
+            {
+              "chunk_id": "537b7058cd48d46e",
+              "rank": 4,
+              "score": 0.184615
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 5,
+              "score": 0.161538
+            }
+          ],
+          "latency_seconds": 0.027588,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 11,
+          "question": "What is LoRA and why is it used?",
+          "category": "transformers",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "b1eb789556dc255f"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "ef39f91c63a1e693",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "f0ab7e4ca607fb8f",
+            "458aa88d35533fc8",
+            "b39e7c06e7a3136d",
+            "4be6039107967a2e",
+            "ce166b90baae05c2"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.0,
+            "recall_at_k": 0.0,
+            "f1_at_k": 0.0,
+            "hit_at_k": 0.0
+          },
+          "mrr": 0.0,
+          "first_relevant_chunk_rank": null,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "f0ab7e4ca607fb8f",
+              "rank": 1,
+              "score": 0.15
+            },
+            {
+              "chunk_id": "458aa88d35533fc8",
+              "rank": 2,
+              "score": 0.15
+            },
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 3,
+              "score": 0.1125
+            },
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 4,
+              "score": 0.1125
+            },
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 5,
+              "score": 0.1125
+            }
+          ],
+          "latency_seconds": 0.022964,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        },
+        {
+          "question_index": 12,
+          "question": "How does a RAG system use a Transformer-based language model?",
+          "category": "cross_document",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "088f63f7cb53bc5d",
+            "5ec861860791dda1"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "5ec861860791dda1",
+            "088f63f7cb53bc5d",
+            "7c114d05d4ca4123",
+            "cf4357695e11239d",
+            "4be6039107967a2e"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": null,
+          "result_scores": [
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 1,
+              "score": 0.417619
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 2,
+              "score": 0.245278
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 3,
+              "score": 0.190909
+            },
+            {
+              "chunk_id": "cf4357695e11239d",
+              "rank": 4,
+              "score": 0.163636
+            },
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 5,
+              "score": 0.163636
+            }
+          ],
+          "latency_seconds": 0.029208,
+          "retrieval_metadata": {
+            "retrieval_method": "semantic_lexical_fusion",
+            "semantic_weight": 0.7,
+            "lexical_weight": 0.3,
+            "candidate_pool": 15,
+            "top_k": 5
+          }
+        }
+      ]
+    },
+    "reranked": {
+      "strategy": "reranked",
+      "dataset_size": 12,
+      "top_k": 5,
+      "aggregate": {
+        "document_precision_at_k": 0.625,
+        "document_recall_at_k": 1.0,
+        "document_f1_at_k": 0.7333,
+        "document_hit_at_k": 1.0,
+        "chunk_precision_at_k": 0.2667,
+        "chunk_recall_at_k": 0.9583,
+        "chunk_f1_at_k": 0.4087,
+        "chunk_hit_at_k": 1.0,
+        "mrr": 0.9444,
+        "mean_latency_seconds": 0.867412,
+        "mean_relevant_chunk_rank_movement": 0.5
+      },
+      "examples": [
+        {
+          "question_index": 1,
+          "question": "What is Retrieval-Augmented Generation (RAG)?",
+          "category": "rag_basics",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "088f63f7cb53bc5d"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "088f63f7cb53bc5d",
+            "5ec861860791dda1",
+            "7ae29cf14c0f5084",
+            "7c114d05d4ca4123",
+            "62548cc173b8a17e"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "088f63f7cb53bc5d",
+              "e03a974470f2a862",
+              "7ae29cf14c0f5084",
+              "7c114d05d4ca4123",
+              "5ec861860791dda1",
+              "a28c26ef4a36c9ab",
+              "ce166b90baae05c2",
+              "62548cc173b8a17e",
+              "b39e7c06e7a3136d",
+              "12b2b910001e8c64",
+              "b1eb789556dc255f",
+              "458aa88d35533fc8",
+              "f0ab7e4ca607fb8f",
+              "537b7058cd48d46e",
+              "cf4357695e11239d",
+              "4be6039107967a2e",
+              "98e7de02846e5670",
+              "b35c99de63c922ef"
+            ],
+            "relevant_chunk_rank_movement": {
+              "088f63f7cb53bc5d": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0
+          },
+          "result_scores": [
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 1,
+              "score": 10.295447,
+              "vector_score": 0.442282,
+              "reranker_score": 10.295447
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 2,
+              "score": 2.796084,
+              "vector_score": -0.018674,
+              "reranker_score": 2.796084
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": 2.658734,
+              "vector_score": 0.09422,
+              "reranker_score": 2.658734
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 4,
+              "score": 2.455089,
+              "vector_score": 0.013124,
+              "reranker_score": 2.455089
+            },
+            {
+              "chunk_id": "62548cc173b8a17e",
+              "rank": 5,
+              "score": 2.225666,
+              "vector_score": -0.127315,
+              "reranker_score": 2.225666
+            }
+          ],
+          "latency_seconds": 6.425848,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 2,
+          "question": "Why is document chunking important in a RAG system?",
+          "category": "rag_basics",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "ce166b90baae05c2"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "ce166b90baae05c2",
+            "5ec861860791dda1",
+            "7c114d05d4ca4123",
+            "7ae29cf14c0f5084",
+            "62548cc173b8a17e"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "ce166b90baae05c2",
+              "5ec861860791dda1",
+              "e03a974470f2a862",
+              "62548cc173b8a17e",
+              "088f63f7cb53bc5d",
+              "7c114d05d4ca4123",
+              "a28c26ef4a36c9ab",
+              "7ae29cf14c0f5084",
+              "458aa88d35533fc8",
+              "4be6039107967a2e",
+              "537b7058cd48d46e",
+              "f0ab7e4ca607fb8f",
+              "12b2b910001e8c64",
+              "b39e7c06e7a3136d",
+              "b1eb789556dc255f",
+              "cf4357695e11239d",
+              "b35c99de63c922ef",
+              "98e7de02846e5670"
+            ],
+            "relevant_chunk_rank_movement": {
+              "ce166b90baae05c2": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0
+          },
+          "result_scores": [
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 1,
+              "score": 7.930863,
+              "vector_score": 0.411245,
+              "reranker_score": 7.930863
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 2,
+              "score": 7.03674,
+              "vector_score": 0.122977,
+              "reranker_score": 7.03674
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 3,
+              "score": 4.294136,
+              "vector_score": -0.018504,
+              "reranker_score": 4.294136
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 4,
+              "score": 3.827658,
+              "vector_score": -0.171368,
+              "reranker_score": 3.827658
+            },
+            {
+              "chunk_id": "62548cc173b8a17e",
+              "rank": 5,
+              "score": 3.035633,
+              "vector_score": 0.023861,
+              "reranker_score": 3.035633
+            }
+          ],
+          "latency_seconds": 0.427774,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 3,
+          "question": "What is the role of embeddings in a RAG system?",
+          "category": "retrieval",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "537b7058cd48d46e",
+            "7c114d05d4ca4123"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2"
+          ],
+          "retrieved_chunk_ids": [
+            "7c114d05d4ca4123",
+            "5ec861860791dda1",
+            "ce166b90baae05c2",
+            "62548cc173b8a17e",
+            "088f63f7cb53bc5d"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.6667,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.8,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 0.5,
+            "f1_at_k": 0.2857,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "ce166b90baae05c2",
+              "7c114d05d4ca4123",
+              "62548cc173b8a17e",
+              "e03a974470f2a862",
+              "088f63f7cb53bc5d",
+              "5ec861860791dda1",
+              "a28c26ef4a36c9ab",
+              "7ae29cf14c0f5084",
+              "537b7058cd48d46e",
+              "4be6039107967a2e",
+              "458aa88d35533fc8",
+              "b1eb789556dc255f",
+              "b35c99de63c922ef",
+              "cf4357695e11239d",
+              "f0ab7e4ca607fb8f",
+              "b39e7c06e7a3136d",
+              "98e7de02846e5670",
+              "12b2b910001e8c64"
+            ],
+            "relevant_chunk_rank_movement": {
+              "537b7058cd48d46e": {
+                "original_vector_rank": 9,
+                "reranked_rank": null,
+                "rank_movement": null
+              },
+              "7c114d05d4ca4123": {
+                "original_vector_rank": 2,
+                "reranked_rank": 1,
+                "rank_movement": 1
+              }
+            },
+            "mean_rank_movement": 1
+          },
+          "result_scores": [
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 1,
+              "score": 4.921765,
+              "vector_score": -0.108476,
+              "reranker_score": 4.921765
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 2,
+              "score": 4.23099,
+              "vector_score": -0.138574,
+              "reranker_score": 4.23099
+            },
+            {
+              "chunk_id": "ce166b90baae05c2",
+              "rank": 3,
+              "score": 3.259443,
+              "vector_score": 0.035278,
+              "reranker_score": 3.259443
+            },
+            {
+              "chunk_id": "62548cc173b8a17e",
+              "rank": 4,
+              "score": 2.486524,
+              "vector_score": -0.109271,
+              "reranker_score": 2.486524
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 5,
+              "score": 0.517754,
+              "vector_score": -0.129141,
+              "reranker_score": 0.517754
+            }
+          ],
+          "latency_seconds": 0.377984,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 4,
+          "question": "What is hybrid retrieval?",
+          "category": "retrieval",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "7ae29cf14c0f5084",
+            "b39e7c06e7a3136d"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "b39e7c06e7a3136d",
+            "7ae29cf14c0f5084",
+            "7c114d05d4ca4123",
+            "088f63f7cb53bc5d",
+            "537b7058cd48d46e"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "b39e7c06e7a3136d",
+              "7ae29cf14c0f5084",
+              "e03a974470f2a862",
+              "088f63f7cb53bc5d",
+              "12b2b910001e8c64",
+              "7c114d05d4ca4123",
+              "ce166b90baae05c2",
+              "5ec861860791dda1",
+              "a28c26ef4a36c9ab",
+              "f0ab7e4ca607fb8f",
+              "458aa88d35533fc8",
+              "62548cc173b8a17e",
+              "537b7058cd48d46e",
+              "4be6039107967a2e",
+              "98e7de02846e5670",
+              "b1eb789556dc255f",
+              "b35c99de63c922ef",
+              "cf4357695e11239d"
+            ],
+            "relevant_chunk_rank_movement": {
+              "7ae29cf14c0f5084": {
+                "original_vector_rank": 2,
+                "reranked_rank": 2,
+                "rank_movement": 0
+              },
+              "b39e7c06e7a3136d": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0
+          },
+          "result_scores": [
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 1,
+              "score": 6.748249,
+              "vector_score": 0.048586,
+              "reranker_score": 6.748249
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 2,
+              "score": 5.552342,
+              "vector_score": -0.003549,
+              "reranker_score": 5.552342
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 3,
+              "score": 2.314,
+              "vector_score": -0.142036,
+              "reranker_score": 2.314
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": 1.150649,
+              "vector_score": -0.069885,
+              "reranker_score": 1.150649
+            },
+            {
+              "chunk_id": "537b7058cd48d46e",
+              "rank": 5,
+              "score": -1.794726,
+              "vector_score": -0.410864,
+              "reranker_score": -1.794726
+            }
+          ],
+          "latency_seconds": 0.396864,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 5,
+          "question": "What does a reranker do in a retrieval pipeline?",
+          "category": "retrieval",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "12b2b910001e8c64",
+            "7ae29cf14c0f5084"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "12b2b910001e8c64",
+            "7ae29cf14c0f5084",
+            "b39e7c06e7a3136d",
+            "088f63f7cb53bc5d",
+            "7c114d05d4ca4123"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "12b2b910001e8c64",
+              "b39e7c06e7a3136d",
+              "7ae29cf14c0f5084",
+              "e03a974470f2a862",
+              "7c114d05d4ca4123",
+              "088f63f7cb53bc5d",
+              "a28c26ef4a36c9ab",
+              "f0ab7e4ca607fb8f",
+              "458aa88d35533fc8",
+              "537b7058cd48d46e",
+              "ce166b90baae05c2",
+              "5ec861860791dda1",
+              "98e7de02846e5670",
+              "b35c99de63c922ef",
+              "4be6039107967a2e",
+              "b1eb789556dc255f",
+              "62548cc173b8a17e",
+              "cf4357695e11239d"
+            ],
+            "relevant_chunk_rank_movement": {
+              "12b2b910001e8c64": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              },
+              "7ae29cf14c0f5084": {
+                "original_vector_rank": 3,
+                "reranked_rank": 2,
+                "rank_movement": 1
+              }
+            },
+            "mean_rank_movement": 0.5
+          },
+          "result_scores": [
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 1,
+              "score": 4.635917,
+              "vector_score": 0.345147,
+              "reranker_score": 4.635917
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 2,
+              "score": 2.865037,
+              "vector_score": 0.105148,
+              "reranker_score": 2.865037
+            },
+            {
+              "chunk_id": "b39e7c06e7a3136d",
+              "rank": 3,
+              "score": 1.24911,
+              "vector_score": 0.116409,
+              "reranker_score": 1.24911
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": -1.967584,
+              "vector_score": -0.201958,
+              "reranker_score": -1.967584
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 5,
+              "score": -2.166695,
+              "vector_score": -0.191887,
+              "reranker_score": -2.166695
+            }
+          ],
+          "latency_seconds": 0.334856,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 6,
+          "question": "What does faithfulness measure in RAG evaluation?",
+          "category": "evaluation",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa"
+          ],
+          "relevant_chunk_ids": [
+            "7ae29cf14c0f5084",
+            "a28c26ef4a36c9ab"
+          ],
+          "retrieved_document_ids": [
+            "3a3c4d3dddd72caa",
+            "f82cb22d66e8fdd2",
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "a28c26ef4a36c9ab",
+            "7ae29cf14c0f5084",
+            "e03a974470f2a862",
+            "5ec861860791dda1",
+            "62548cc173b8a17e"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "a28c26ef4a36c9ab",
+              "e03a974470f2a862",
+              "7ae29cf14c0f5084",
+              "5ec861860791dda1",
+              "ce166b90baae05c2",
+              "62548cc173b8a17e",
+              "088f63f7cb53bc5d",
+              "7c114d05d4ca4123",
+              "b1eb789556dc255f",
+              "458aa88d35533fc8",
+              "b39e7c06e7a3136d",
+              "12b2b910001e8c64",
+              "4be6039107967a2e",
+              "98e7de02846e5670",
+              "537b7058cd48d46e",
+              "cf4357695e11239d",
+              "f0ab7e4ca607fb8f",
+              "b35c99de63c922ef"
+            ],
+            "relevant_chunk_rank_movement": {
+              "7ae29cf14c0f5084": {
+                "original_vector_rank": 3,
+                "reranked_rank": 2,
+                "rank_movement": 1
+              },
+              "a28c26ef4a36c9ab": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0.5
+          },
+          "result_scores": [
+            {
+              "chunk_id": "a28c26ef4a36c9ab",
+              "rank": 1,
+              "score": 7.071176,
+              "vector_score": 0.157559,
+              "reranker_score": 7.071176
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 2,
+              "score": 5.669135,
+              "vector_score": -0.333367,
+              "reranker_score": 5.669135
+            },
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 3,
+              "score": -1.048345,
+              "vector_score": -0.303689,
+              "reranker_score": -1.048345
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 4,
+              "score": -4.228819,
+              "vector_score": -0.384392,
+              "reranker_score": -4.228819
+            },
+            {
+              "chunk_id": "62548cc173b8a17e",
+              "rank": 5,
+              "score": -5.390571,
+              "vector_score": -0.439922,
+              "reranker_score": -5.390571
+            }
+          ],
+          "latency_seconds": 0.300591,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 7,
+          "question": "What is precision@k in information retrieval?",
+          "category": "evaluation",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "e03a974470f2a862"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "e03a974470f2a862",
+            "12b2b910001e8c64",
+            "7ae29cf14c0f5084",
+            "f0ab7e4ca607fb8f",
+            "088f63f7cb53bc5d"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "12b2b910001e8c64",
+              "e03a974470f2a862",
+              "458aa88d35533fc8",
+              "f0ab7e4ca607fb8f",
+              "98e7de02846e5670",
+              "a28c26ef4a36c9ab",
+              "b39e7c06e7a3136d",
+              "7ae29cf14c0f5084",
+              "088f63f7cb53bc5d",
+              "537b7058cd48d46e",
+              "7c114d05d4ca4123",
+              "ce166b90baae05c2",
+              "b1eb789556dc255f",
+              "4be6039107967a2e",
+              "5ec861860791dda1",
+              "b35c99de63c922ef",
+              "62548cc173b8a17e",
+              "cf4357695e11239d"
+            ],
+            "relevant_chunk_rank_movement": {
+              "e03a974470f2a862": {
+                "original_vector_rank": 2,
+                "reranked_rank": 1,
+                "rank_movement": 1
+              }
+            },
+            "mean_rank_movement": 1
+          },
+          "result_scores": [
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 1,
+              "score": 7.899214,
+              "vector_score": 0.131298,
+              "reranker_score": 7.899214
+            },
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 2,
+              "score": 5.505023,
+              "vector_score": 0.202578,
+              "reranker_score": 5.505023
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": -3.270169,
+              "vector_score": -0.316346,
+              "reranker_score": -3.270169
+            },
+            {
+              "chunk_id": "f0ab7e4ca607fb8f",
+              "rank": 4,
+              "score": -3.47158,
+              "vector_score": -0.273537,
+              "reranker_score": -3.47158
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 5,
+              "score": -5.49771,
+              "vector_score": -0.327074,
+              "reranker_score": -5.49771
+            }
+          ],
+          "latency_seconds": 0.459119,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 8,
+          "question": "What is recall@k in information retrieval?",
+          "category": "evaluation",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "f82cb22d66e8fdd2"
+          ],
+          "relevant_chunk_ids": [
+            "e03a974470f2a862"
+          ],
+          "retrieved_document_ids": [
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "e03a974470f2a862",
+            "12b2b910001e8c64",
+            "7ae29cf14c0f5084",
+            "088f63f7cb53bc5d",
+            "537b7058cd48d46e"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "e03a974470f2a862",
+              "12b2b910001e8c64",
+              "088f63f7cb53bc5d",
+              "7ae29cf14c0f5084",
+              "b39e7c06e7a3136d",
+              "f0ab7e4ca607fb8f",
+              "7c114d05d4ca4123",
+              "5ec861860791dda1",
+              "458aa88d35533fc8",
+              "a28c26ef4a36c9ab",
+              "537b7058cd48d46e",
+              "98e7de02846e5670",
+              "4be6039107967a2e",
+              "ce166b90baae05c2",
+              "cf4357695e11239d",
+              "b35c99de63c922ef",
+              "b1eb789556dc255f",
+              "62548cc173b8a17e"
+            ],
+            "relevant_chunk_rank_movement": {
+              "e03a974470f2a862": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0
+          },
+          "result_scores": [
+            {
+              "chunk_id": "e03a974470f2a862",
+              "rank": 1,
+              "score": 7.202055,
+              "vector_score": 0.25114,
+              "reranker_score": 7.202055
+            },
+            {
+              "chunk_id": "12b2b910001e8c64",
+              "rank": 2,
+              "score": 3.1662,
+              "vector_score": 0.145007,
+              "reranker_score": 3.1662
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": -3.849018,
+              "vector_score": -0.038259,
+              "reranker_score": -3.849018
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": -5.426639,
+              "vector_score": 0.031315,
+              "reranker_score": -5.426639
+            },
+            {
+              "chunk_id": "537b7058cd48d46e",
+              "rank": 5,
+              "score": -7.6007,
+              "vector_score": -0.224317,
+              "reranker_score": -7.6007
+            }
+          ],
+          "latency_seconds": 0.318618,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 9,
+          "question": "What does self-attention allow a Transformer to do?",
+          "category": "transformers",
+          "difficulty": "easy",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "98e7de02846e5670"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "retrieved_chunk_ids": [
+            "4be6039107967a2e",
+            "5ec861860791dda1",
+            "98e7de02846e5670",
+            "cf4357695e11239d",
+            "b35c99de63c922ef"
+          ],
+          "unique_document_count": 1,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 0.3333,
+          "first_relevant_chunk_rank": 3,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "4be6039107967a2e",
+              "b35c99de63c922ef",
+              "5ec861860791dda1",
+              "b1eb789556dc255f",
+              "cf4357695e11239d",
+              "98e7de02846e5670",
+              "088f63f7cb53bc5d",
+              "a28c26ef4a36c9ab",
+              "e03a974470f2a862",
+              "12b2b910001e8c64",
+              "7ae29cf14c0f5084",
+              "ce166b90baae05c2",
+              "62548cc173b8a17e",
+              "b39e7c06e7a3136d",
+              "7c114d05d4ca4123",
+              "f0ab7e4ca607fb8f",
+              "458aa88d35533fc8",
+              "537b7058cd48d46e"
+            ],
+            "relevant_chunk_rank_movement": {
+              "98e7de02846e5670": {
+                "original_vector_rank": 6,
+                "reranked_rank": 3,
+                "rank_movement": 3
+              }
+            },
+            "mean_rank_movement": 3
+          },
+          "result_scores": [
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 1,
+              "score": 5.770821,
+              "vector_score": 0.269793,
+              "reranker_score": 5.770821
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 2,
+              "score": 2.86871,
+              "vector_score": -0.04061,
+              "reranker_score": 2.86871
+            },
+            {
+              "chunk_id": "98e7de02846e5670",
+              "rank": 3,
+              "score": 2.076604,
+              "vector_score": -0.17395,
+              "reranker_score": 2.076604
+            },
+            {
+              "chunk_id": "cf4357695e11239d",
+              "rank": 4,
+              "score": 0.984321,
+              "vector_score": -0.151076,
+              "reranker_score": 0.984321
+            },
+            {
+              "chunk_id": "b35c99de63c922ef",
+              "rank": 5,
+              "score": -0.018857,
+              "vector_score": 0.099612,
+              "reranker_score": -0.018857
+            }
+          ],
+          "latency_seconds": 0.303181,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 10,
+          "question": "What are the query, key, and value representations in self-attention used for?",
+          "category": "transformers",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "98e7de02846e5670"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "98e7de02846e5670",
+            "4be6039107967a2e",
+            "5ec861860791dda1",
+            "b35c99de63c922ef",
+            "7ae29cf14c0f5084"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.5,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.6667,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "98e7de02846e5670",
+              "4be6039107967a2e",
+              "b35c99de63c922ef",
+              "5ec861860791dda1",
+              "cf4357695e11239d",
+              "12b2b910001e8c64",
+              "7ae29cf14c0f5084",
+              "088f63f7cb53bc5d",
+              "b1eb789556dc255f",
+              "537b7058cd48d46e",
+              "e03a974470f2a862",
+              "b39e7c06e7a3136d",
+              "458aa88d35533fc8",
+              "7c114d05d4ca4123",
+              "a28c26ef4a36c9ab",
+              "f0ab7e4ca607fb8f",
+              "ce166b90baae05c2",
+              "62548cc173b8a17e"
+            ],
+            "relevant_chunk_rank_movement": {
+              "98e7de02846e5670": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0
+          },
+          "result_scores": [
+            {
+              "chunk_id": "98e7de02846e5670",
+              "rank": 1,
+              "score": 6.310902,
+              "vector_score": 0.273937,
+              "reranker_score": 6.310902
+            },
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 2,
+              "score": -1.971904,
+              "vector_score": 0.121835,
+              "reranker_score": -1.971904
+            },
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 3,
+              "score": -3.486779,
+              "vector_score": -0.043219,
+              "reranker_score": -3.486779
+            },
+            {
+              "chunk_id": "b35c99de63c922ef",
+              "rank": 4,
+              "score": -5.615908,
+              "vector_score": 0.046367,
+              "reranker_score": -5.615908
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 5,
+              "score": -6.479175,
+              "vector_score": -0.255099,
+              "reranker_score": -6.479175
+            }
+          ],
+          "latency_seconds": 0.389911,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 11,
+          "question": "What is LoRA and why is it used?",
+          "category": "transformers",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "b1eb789556dc255f"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693",
+            "f82cb22d66e8fdd2",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "b1eb789556dc255f",
+            "f0ab7e4ca607fb8f",
+            "458aa88d35533fc8",
+            "088f63f7cb53bc5d",
+            "4be6039107967a2e"
+          ],
+          "unique_document_count": 3,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 0.3333,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.2,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.3333,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "b1eb789556dc255f",
+              "e03a974470f2a862",
+              "f0ab7e4ca607fb8f",
+              "088f63f7cb53bc5d",
+              "62548cc173b8a17e",
+              "b39e7c06e7a3136d",
+              "b35c99de63c922ef",
+              "5ec861860791dda1",
+              "458aa88d35533fc8",
+              "12b2b910001e8c64",
+              "a28c26ef4a36c9ab",
+              "7c114d05d4ca4123",
+              "7ae29cf14c0f5084",
+              "4be6039107967a2e",
+              "ce166b90baae05c2",
+              "537b7058cd48d46e",
+              "98e7de02846e5670",
+              "cf4357695e11239d"
+            ],
+            "relevant_chunk_rank_movement": {
+              "b1eb789556dc255f": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0
+          },
+          "result_scores": [
+            {
+              "chunk_id": "b1eb789556dc255f",
+              "rank": 1,
+              "score": 2.937657,
+              "vector_score": -0.137028,
+              "reranker_score": 2.937657
+            },
+            {
+              "chunk_id": "f0ab7e4ca607fb8f",
+              "rank": 2,
+              "score": -7.746708,
+              "vector_score": -0.682553,
+              "reranker_score": -7.746708
+            },
+            {
+              "chunk_id": "458aa88d35533fc8",
+              "rank": 3,
+              "score": -7.921864,
+              "vector_score": -0.804105,
+              "reranker_score": -7.921864
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 4,
+              "score": -8.16825,
+              "vector_score": -0.69562,
+              "reranker_score": -8.16825
+            },
+            {
+              "chunk_id": "4be6039107967a2e",
+              "rank": 5,
+              "score": -8.427103,
+              "vector_score": -0.856389,
+              "reranker_score": -8.427103
+            }
+          ],
+          "latency_seconds": 0.353659,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        },
+        {
+          "question_index": 12,
+          "question": "How does a RAG system use a Transformer-based language model?",
+          "category": "cross_document",
+          "difficulty": "medium",
+          "relevant_document_ids": [
+            "3a3c4d3dddd72caa",
+            "ef39f91c63a1e693"
+          ],
+          "relevant_chunk_ids": [
+            "088f63f7cb53bc5d",
+            "5ec861860791dda1"
+          ],
+          "retrieved_document_ids": [
+            "ef39f91c63a1e693",
+            "3a3c4d3dddd72caa"
+          ],
+          "retrieved_chunk_ids": [
+            "5ec861860791dda1",
+            "088f63f7cb53bc5d",
+            "7ae29cf14c0f5084",
+            "7c114d05d4ca4123",
+            "cf4357695e11239d"
+          ],
+          "unique_document_count": 2,
+          "retrieved_chunk_count": 5,
+          "document_metrics": {
+            "precision_at_k": 1.0,
+            "recall_at_k": 1.0,
+            "f1_at_k": 1.0,
+            "hit_at_k": 1.0
+          },
+          "chunk_metrics": {
+            "precision_at_k": 0.4,
+            "recall_at_k": 1.0,
+            "f1_at_k": 0.5714,
+            "hit_at_k": 1.0
+          },
+          "mrr": 1.0,
+          "first_relevant_chunk_rank": 1,
+          "rank_movement": {
+            "candidate_pool_size": 18,
+            "candidate_chunk_ids": [
+              "5ec861860791dda1",
+              "088f63f7cb53bc5d",
+              "cf4357695e11239d",
+              "b1eb789556dc255f",
+              "4be6039107967a2e",
+              "ce166b90baae05c2",
+              "62548cc173b8a17e",
+              "e03a974470f2a862",
+              "7c114d05d4ca4123",
+              "a28c26ef4a36c9ab",
+              "b35c99de63c922ef",
+              "7ae29cf14c0f5084",
+              "b39e7c06e7a3136d",
+              "537b7058cd48d46e",
+              "458aa88d35533fc8",
+              "98e7de02846e5670",
+              "f0ab7e4ca607fb8f",
+              "12b2b910001e8c64"
+            ],
+            "relevant_chunk_rank_movement": {
+              "088f63f7cb53bc5d": {
+                "original_vector_rank": 2,
+                "reranked_rank": 2,
+                "rank_movement": 0
+              },
+              "5ec861860791dda1": {
+                "original_vector_rank": 1,
+                "reranked_rank": 1,
+                "rank_movement": 0
+              }
+            },
+            "mean_rank_movement": 0
+          },
+          "result_scores": [
+            {
+              "chunk_id": "5ec861860791dda1",
+              "rank": 1,
+              "score": 8.038626,
+              "vector_score": 0.28491,
+              "reranker_score": 8.038626
+            },
+            {
+              "chunk_id": "088f63f7cb53bc5d",
+              "rank": 2,
+              "score": 4.618542,
+              "vector_score": 0.116631,
+              "reranker_score": 4.618542
+            },
+            {
+              "chunk_id": "7ae29cf14c0f5084",
+              "rank": 3,
+              "score": 4.03476,
+              "vector_score": -0.314009,
+              "reranker_score": 4.03476
+            },
+            {
+              "chunk_id": "7c114d05d4ca4123",
+              "rank": 4,
+              "score": 2.628236,
+              "vector_score": -0.274827,
+              "reranker_score": 2.628236
+            },
+            {
+              "chunk_id": "cf4357695e11239d",
+              "rank": 5,
+              "score": 1.580972,
+              "vector_score": -0.078575,
+              "reranker_score": 1.580972
+            }
+          ],
+          "latency_seconds": 0.320535,
+          "retrieval_metadata": {
+            "retrieval_method": "vector_then_cross_encoder",
+            "top_k": 5,
+            "candidate_pool": 18,
+            "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, commonly called RAG, is an architecture that combines information retrieval with language model generation.
+
+A typical RAG system first receives a user question. The system then searches a collection of documents to retrieve information that is relevant to the question. The retrieved information is provided to a language model as context. The language model uses that context to generate an answer.
+
+RAG is useful when a language model needs access to information that is not reliably contained in its original training data. The external knowledge base can contain company documents, technical documentation, research papers, policies, manuals, or other domain-specific information.
+
+A basic RAG pipeline contains several stages. Documents are loaded from their original sources, divided into smaller chunks, converted into numerical embeddings, and stored in a vector database. When a user asks a question, the question is converted into an embedding and compared with stored document embeddings. The most relevant chunks are retrieved and passed to the generation model.
+
+Document chunking is important because very large documents are difficult to retrieve and provide as context efficiently. A document is therefore commonly divided into smaller overlapping pieces. Overlap can preserve information that occurs near chunk boundaries.
+
+Embeddings are numerical representations of text. Texts with similar meanings tend to have embeddings that are closer together in embedding space. Vector similarity can therefore be used to identify semantically related document chunks.
+
+RAG can reduce unsupported generation by giving the language model external evidence to use when answering a question. However, retrieval quality directly affects answer quality. If the relevant information is not retrieved, the generation model may not have the evidence required to produce a correct answer.
+
+A RAG system can use different retrieval strategies. Naive vector retrieval generally selects chunks using semantic similarity. Hybrid retrieval can combine semantic similarity with lexical matching. A reranked system can first retrieve a candidate set and then use a more precise ranking model to reorder those candidates.
+
+RAG systems can also maintain conversation history. A query contextualizer can use previous conversation turns to transform a follow-up question into a more self-contained query before retrieval.
+
+Evaluation is important for RAG systems because retrieval quality and generation quality are separate concerns. Useful evaluation dimensions include retrieval precision, retrieval recall, answer correctness, faithfulness to retrieved evidence, latency, and token usage.
+
+Faithfulness measures whether claims in a generated answer are supported by the retrieved evidence. Correctness measures how closely the generated answer matches an expected reference answer. Retrieval metrics measure whether relevant documents or chunks were successfully retrieved.
+
+The main advantage of RAG is that the knowledge source can be updated independently of the language model. New documents can be indexed without retraining the language model itself.

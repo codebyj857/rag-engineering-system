@@ -1,0 +1,37 @@
+# Transformers and Attention
+
+A Transformer is a neural network architecture designed to process sequences using attention mechanisms. Transformers became important in natural language processing because they can model relationships between tokens without processing a sequence strictly one token at a time.
+
+A text input is first divided into tokens. Tokenization converts text into smaller units that a model can process. Depending on the tokenizer, a token can represent a complete word, part of a word, punctuation, or another text unit.
+
+Tokens are mapped to numerical representations before being processed by the neural network. Positional information is also required because the attention mechanism itself does not inherently encode the order of tokens.
+
+Self-attention allows a token to consider information from other tokens in the same sequence. For each token, the attention mechanism produces query, key, and value representations. Attention scores are calculated by comparing queries with keys. The scores determine how strongly information from different tokens contributes to the resulting representation.
+
+The standard scaled dot-product attention operation can be expressed as:
+
+Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V
+
+Here, Q represents queries, K represents keys, V represents values, and d_k represents the dimensionality of the key vectors. The scaling factor helps control the magnitude of the dot products before the softmax operation.
+
+Multi-head attention uses multiple attention mechanisms, called heads, operating in parallel. Each head can learn different relationships between tokens. The outputs of the heads are combined to produce the final attention representation.
+
+A Transformer layer commonly contains an attention mechanism followed by a feed-forward neural network. Residual connections and normalization are used around these components to support stable training and information flow.
+
+Transformer architectures can be organized into encoder and decoder components. Encoder-style architectures are designed to produce contextual representations of input sequences. Decoder-style architectures generate output tokens sequentially while using previously generated tokens as context.
+
+BERT is an example of an encoder-based Transformer model. It was designed to learn contextual representations of text and can be adapted for tasks such as classification and question answering.
+
+GPT-style models are decoder-based Transformer language models. They generate text autoregressively, predicting the next token based on the preceding context.
+
+The attention mechanism allows a Transformer to connect information between tokens that may be far apart in a sequence. This is useful for language because the meaning of a word can depend on other words that occur much earlier or later in the text.
+
+Transformer models can be adapted to new tasks through fine-tuning. Fine-tuning updates some or all model parameters using a task-specific dataset. Parameter-efficient fine-tuning methods instead reduce the number of parameters that need to be updated.
+
+LoRA, or Low-Rank Adaptation, is a parameter-efficient fine-tuning technique. Instead of updating the original model weights directly, LoRA introduces trainable low-rank matrices that modify the model's behavior while keeping the original weights largely unchanged.
+
+Transformers are computationally expensive for long sequences because standard self-attention compares tokens with one another. The amount of pairwise interaction grows with the square of the sequence length. This makes efficient attention methods and context management important for systems that process long inputs.
+
+In a RAG system, a Transformer-based language model can receive retrieved document chunks as context and generate an answer based on that evidence. The retrieval component supplies external information, while the language model performs language understanding and generation.
+
+Transformers are therefore an important component of modern language applications, but a complete RAG system still requires separate components for document ingestion, chunking, embedding generation, retrieval, verification, and evaluation.

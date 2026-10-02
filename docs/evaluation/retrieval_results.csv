@@ -1,0 +1,11 @@
+Metric @5,Naive,Hybrid,Reranked
+Document Precision,69.44%,62.50%,62.50%
+Document Recall,100.00%,100.00%,100.00%
+Document F1,77.78%,73.33%,73.33%
+Document Hit,100.00%,100.00%,100.00%
+Chunk Precision,25.00%,26.67%,26.67%
+Chunk Recall,87.50%,91.67%,95.83%
+Chunk F1,38.09%,40.47%,40.87%
+Chunk Hit,91.67%,91.67%,100.00%
+MRR,0.8333,0.8125,0.9444
+Mean Latency,0.4985s,0.0273s,0.8674s

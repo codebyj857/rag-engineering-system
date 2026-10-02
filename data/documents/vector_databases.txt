@@ -1,0 +1,31 @@
+# Vector Databases and Retrieval
+
+A vector database is a data system designed to store and search numerical vector representations. In a retrieval system, text documents or document chunks can be converted into embeddings and stored as vectors together with metadata.
+
+An embedding model converts text into a numerical representation called an embedding vector. The vector captures information about the meaning and semantic characteristics of the input text. A retrieval system can compare a query embedding with stored document embeddings to identify documents that are semantically related to the query.
+
+Vector similarity can be calculated using different mathematical measures. Cosine similarity measures the angle between two vectors and is commonly used for comparing normalized text embeddings. Euclidean distance measures the straight-line distance between vectors. The appropriate similarity measure depends on the embedding model and retrieval implementation.
+
+A vector store normally keeps both the vector representation and associated metadata. Metadata can include the original document identifier, chunk identifier, source filename, page number, chunk position, or other application-specific information.
+
+Metadata is useful because retrieval does not always depend only on semantic similarity. An application may need to restrict results to a particular document, category, user, date range, or other attribute. Metadata filtering can reduce the search space and improve retrieval precision for some use cases.
+
+Chroma is a vector database that can be used for storing embeddings and performing similarity searches. A Chroma collection groups related records and can store documents, embeddings, identifiers, and metadata.
+
+Approximate nearest-neighbor indexing can make vector search faster for large collections. Instead of comparing a query with every vector exactly, an approximate search structure can identify a small set of likely nearest neighbors. This introduces a trade-off between search speed and exactness.
+
+Vector retrieval is not the same as lexical retrieval. Semantic vector retrieval focuses on similarity in embedding space, while lexical retrieval focuses on matching words or terms. A query containing a specific technical identifier may benefit from lexical matching even when semantic similarity is also useful.
+
+Hybrid retrieval combines multiple retrieval signals. For example, semantic similarity can be combined with lexical term overlap. A hybrid retriever can assign a weighted score to each candidate using both signals and then return the highest-scoring results.
+
+Candidate generation and final ranking can also be separated. A retrieval system may first retrieve a relatively large candidate set using a fast method. A reranker can then examine the query and each candidate together and assign more precise relevance scores.
+
+Reranking can improve the ordering of retrieved results, but it adds computational cost because the reranking model must process candidate query-document pairs. A practical system therefore needs to balance retrieval quality and latency.
+
+Top-k retrieval means returning the k highest-ranked results for a query. For example, top-k equal to five means that the retrieval stage returns at most five candidates. Increasing k can improve the chance of retrieving relevant evidence, but it can also increase the amount of context passed to later stages.
+
+Retrieval evaluation can use precision and recall. Precision@k measures the proportion of retrieved results that are relevant among the top k results. Recall@k measures the proportion of all relevant results that were successfully retrieved within the top k results.
+
+A retrieval system can have high recall but low precision when it retrieves many relevant documents along with many irrelevant ones. Conversely, it can have high precision but low recall when it retrieves only a small number of highly relevant results while missing other relevant information.
+
+Vector databases are therefore one component of a complete RAG architecture rather than the entire RAG system. A production RAG application also requires document ingestion, chunking, embedding generation, retrieval logic, generation, verification, evaluation, and an application interface.
